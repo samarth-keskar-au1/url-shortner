@@ -1,0 +1,60 @@
+tags:
+  - name: short_link
+    description: short link APIS
+
+paths:
+  # [GET] short-link/code
+  /short-link/{code}:
+    get:
+      tags:
+        - short_link
+      summary: Find Url By Code
+      parameters:
+        - name: code
+          in: path
+          description: code
+          required: true
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+    # [POST] short-link
+    post:
+      tags:
+        - short_link
+      summary: Create Short Link
+      parameters:
+        - name: body
+          in: body
+          description: url
+          required: true
+          schema:
+            $ref: '#/definitions/short-link'
+      responses:
+        201:
+          description: 'Created'
+        400:
+          description: 'Bad Request'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# definitions
+definitions:
+  short-link:
+    type: object
+    required:
+      - url
+    properties:
+      url:
+        type: string
+        description: url which needs to be shortened
+
+schemes:
+  - https
+  - http

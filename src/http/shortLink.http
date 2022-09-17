@@ -1,0 +1,17 @@
+# baseURL
+@baseURL = http://localhost:3000
+
+
+###
+# Find Url By Code
+GET {{ baseURL }}/urls/xbayse
+
+###
+# Create Short Link
+POST {{ baseURL }}/short-url
+Content-Type: application/json
+
+{
+    "url":"https://www.google.com"
+}
+
