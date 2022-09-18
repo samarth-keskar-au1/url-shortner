@@ -9,9 +9,14 @@ class ShortLinkController {
   public getLinkByCode = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const code: string = req.params.code;
-      const findOneUrlData: ShortLink = await this.shortLinkService.findLinkByCode(code);
+      const findOneUrlData: ShortLink = await this.shortLinkService.findLinkByCode(code, { referrer: req?.headers?.referer, ip: req?.ip });
 
-      res.status(200).json({ data: findOneUrlData, message: 'findOne' });
+      res.status(200).json({
+        data: {
+          url: findOneUrlData.url,
+        },
+        message: 'findOne',
+      });
     } catch (error) {
       next(error);
     }

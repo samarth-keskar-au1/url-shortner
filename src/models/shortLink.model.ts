@@ -8,9 +8,12 @@ class ShortLink {
   @prop({ type: String, required: true, unique: true })
   public code: string;
 
-  public createdAt?: Date;
+  @prop({ type: Number, default: 0 })
+  public visits: number;
 
-  public updatedAt?: Date;
+  public created_at?: Date;
+
+  public updated_at?: Date;
 }
 
 const ShortLinkModel = getModelForClass(ShortLink);

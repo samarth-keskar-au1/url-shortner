@@ -23,6 +23,7 @@ paths:
           description: 'Server Error'
 
     # [POST] short-link
+  /short-link:
     post:
       tags:
         - short_link

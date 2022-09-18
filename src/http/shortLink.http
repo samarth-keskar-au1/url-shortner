@@ -8,7 +8,7 @@ GET {{ baseURL }}/urls/xbayse
 
 ###
 # Create Short Link
-POST {{ baseURL }}/short-url
+POST {{ baseURL }}
 Content-Type: application/json
 
 {
