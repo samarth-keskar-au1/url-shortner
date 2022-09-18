@@ -19,13 +19,13 @@ describe('Testing utility functions', () => {
     await ShortLinkModel.create({ url: 'www.google.com', code: randomCode });
     const checkIfDuplicate = await isDuplicateShortCode(randomCode);
     await ShortLinkModel.deleteOne({ code: randomCode });
-    expect(!!checkIfDuplicate).toBe(true);
+    expect(checkIfDuplicate).toBe(true);
   });
 
   it('Should return false if the duplicate does not exists', async () => {
     const randomCode = await getRandomUniqueString();
     await ShortLinkModel.deleteOne({ code: randomCode });
     const checkIfDuplicate = await isDuplicateShortCode(randomCode);
-    expect(checkIfDuplicate).toBe(null);
+    expect(checkIfDuplicate).toBe(false);
   });
 });

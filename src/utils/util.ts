@@ -53,5 +53,5 @@ export const getRandomUniqueString = async (defaultLength: number = 7) => {
 export const isDuplicateShortCode = async (code: string) => {
   const shortLink = await shortLinkModel.exists({ code });
 
-  return shortLink;
+  return !!shortLink;
 };
